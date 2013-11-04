@@ -1,11 +1,17 @@
 package genericList;
 
-public interface Stack<T> {
+public interface List<T> {
 	
 	/*
-     * Pushes a new object onto the stack
+     * Adds a new object onto the list
      */
-    void push(T newValue);
+    void add(T newValue);
+    
+    /*
+     * Removes an item from the list
+     */
+	void remove(DoubleListNode<T> object);
+
 
     /*
      * Retrieves the last element from the stack and returns it. 
@@ -19,10 +25,6 @@ public interface Stack<T> {
      */
     T peek();
 
-    /* 
-     * Returns true if the stack contains no elements, 
-     * false otherwise. 
-     */
-    boolean isEmpty();
+
     
 }

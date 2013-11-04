@@ -13,27 +13,30 @@ public class Script {
 	}
 	
 	private void launch() {
-		Stack<Integer> intList = new DoubleListStack<Integer>();
-		Stack<String> stringList = new DoubleListStack<String>();
-		intList.push(5);
-		intList.push(6);
-		intList.push(7);
-		intList.push(8);
-		System.out.println(intList.isEmpty());
-		System.out.println(((DoubleListStack<Integer>) intList).getSize());
+		List<Integer> intList = new DoubleList<Integer>();
+		List<String> stringList = new DoubleList<String>();
+		intList.add(5);
+		intList.add(6);
+		intList.add(7);
+		intList.add(8);
+		System.out.println(((DoubleList<Integer>) intList).getSize());
 		
-		stringList.push("hello");
-		stringList.push("world");
-		stringList.push("one");
-		stringList.push("two");
-		System.out.println(stringList.isEmpty());
-		System.out.println(((DoubleListStack<String>) stringList).getSize());
+		stringList.add("hello");
+		stringList.add("world");
+		stringList.add("one");
+		stringList.add("two");
+		System.out.println(((DoubleList<String>) stringList).getSize());
+		
+		((DoubleList<String>) stringList).prettyPrintForward();
+
 		
 		System.out.println(stringList.pop());
-		
-		((DoubleListStack<String>) stringList).prettyPrintForward();
+		((DoubleList<String>) stringList).prettyPrintForward();
+
 		
 		System.out.println(stringList.peek());
+		
+//		stringList.remove(object)
 	}
 	
 

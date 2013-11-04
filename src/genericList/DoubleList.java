@@ -1,24 +1,23 @@
 package genericList;
 
 
+public class DoubleList<T> implements List<T> {
 
-public class DoubleListStack<T> implements Stack<T> {
-
-	 private DoubleListNode<T> head;
+	 private DoubleListNode<T> first;
 	 
-	 public DoubleListStack() {
-		 head = null;
+	 public DoubleList() {
+		 first = null;
 	 }
 	
 	@Override
-	public void push(T newValue) {
+	public void add(T newValue) {
 		
 		DoubleListNode<T> newNode = new DoubleListNode<T>(newValue);
-		if (head == null) {
-			head = newNode;
+		if (first == null) {
+			first = newNode;
 			return;
 		}
-		DoubleListNode<T> aux = head;
+		DoubleListNode<T> aux = first;
 		
 		while(aux.getNext() != null) {
 			aux = aux.getNext();
@@ -27,44 +26,57 @@ public class DoubleListStack<T> implements Stack<T> {
 		aux.setNext(newNode);	
 		
 	}
+	
+	@Override
+	public void remove(DoubleListNode<T> x) {
+		if (first == null) {
+			return;
+		}
+		
+		DoubleListNode<T> aux = first;
+		
+		while(aux.getNext() != null) {
+			
+			if (aux.getItem().equals(x.getItem())) {
+			aux.getPrevious().setNext(x.getNext());
+			aux.getNext().setPrevious(x.getPrevious());
+				
+			}
+			aux = aux.getNext();
+		}
+		
+	}
 
 	@Override
 	public T pop() {
-	  if (head == null) {
+	  if (first == null) {
 			return (T) null;
 		  }
-		  T result = head.getItem();
-		  head = head.getNext();
-		  head.setPrevious(null);
+		  T result = first.getItem();
+		  first = first.getNext();
+		  first.setPrevious(null);
 		  return result;
 		
 	}
 
 	@Override
 	public T peek() {
-		if (head == null) {
+		if (first == null) {
 			return (T) null;
 		  } else {
-			return head.getItem();
+			return first.getItem();
 		  }
 
 	}
 
-	@Override
-	public boolean isEmpty() {
-	  if (getSize() == 0) {
-			return true;
-		  } else {
-			return false;
-		  }
-	}
+
 	
     /**
      * Returns the number of integers in the stack
      */
     public int getSize() {
 	  int result = 0;
-	  DoubleListNode<T> currentNode = head;
+	  DoubleListNode<T> currentNode = first;
 	  while (currentNode != null) {
 		currentNode = currentNode.getNext();
 		result++;
@@ -78,7 +90,7 @@ public class DoubleListStack<T> implements Stack<T> {
 		System.out.println("Print forward");
 		System.out.println("------------------");
 
-		DoubleListNode<T> current = head;
+		DoubleListNode<T> current = first;
 
 		while(current != null) {
 			if (current.getPrevious() != null ){
@@ -94,5 +106,7 @@ public class DoubleListStack<T> implements Stack<T> {
 		}
 //		System.out.println("Number of Patients: " + patientListStart.size());
 	}
+
+
 
 }
