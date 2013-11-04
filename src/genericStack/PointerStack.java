@@ -1,6 +1,7 @@
 package genericStack;
 
-public class PointerStack<T> implements Stack<T> {
+//public class AImpl<T extends C> implements A<T> { /*Bound mismatch error*/ ... }
+public class PointerStack<T extends Number> implements Stack<T> {
 	
 	private StackNode<T> head;
 	

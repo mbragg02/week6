@@ -1,6 +1,6 @@
 package genericStack;
 
-public interface Stack<T> {
+public interface Stack<T extends Number> {
 
 	/*
      * Adds a new object onto the stack
