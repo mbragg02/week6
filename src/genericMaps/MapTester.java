@@ -35,16 +35,16 @@ public class MapTester {
 		
 	}
 	
-	private int hash(String value) {		
+	static int hash(String value) {		
 		int hash = value.hashCode();
 		hash = Math.abs(hash);
 		hash = hash % 999;
 		return hash;
 	}
-	private int hash(Double value) {
+	 int hash(Double value) {
 		return hash(value + "");
 	}
-	private int hash(int value) {
+	 int hash(int value) {
 		return hash(value + "");
 		
 	}
