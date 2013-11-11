@@ -27,9 +27,44 @@ public class DoubleList<T> implements List<T> {
 		
 	}
 	
+	public void add(DoubleListNode<T> newNode) {
+		
+		if (first == null) {
+			first = newNode;
+			return;
+		}
+		DoubleListNode<T> aux = first;
+		
+		while(aux.getNext() != null) {
+			aux = aux.getNext();
+		}
+		newNode.setPrevious((DoubleListNode<T>) aux);
+		aux.setNext(newNode);	
+		
+	}
+	
+	
 	@Override
 	public void remove(DoubleListNode<T> x) {
 		if (first == null) {
+			return;
+		}
+		
+		// removing the first element
+		if (x == first) {
+			// if there is only one element
+			if(x.getNext() == null) {
+				first = null;
+				return;
+			}
+			x.getNext().setPrevious(null);
+			first = x.getNext();
+			return;
+		}
+		
+		// removing the last element
+		if(x.getNext() == null) {
+			x.getPrevious().setNext(null);
 			return;
 		}
 		
@@ -38,9 +73,8 @@ public class DoubleList<T> implements List<T> {
 		while(aux.getNext() != null) {
 			
 			if (aux.getItem().equals(x.getItem())) {
-			aux.getPrevious().setNext(x.getNext());
-			aux.getNext().setPrevious(x.getPrevious());
-				
+				aux.getPrevious().setNext(x.getNext());
+				aux.getNext().setPrevious(x.getPrevious());
 			}
 			aux = aux.getNext();
 		}
