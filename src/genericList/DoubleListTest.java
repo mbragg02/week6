@@ -30,6 +30,7 @@ public class DoubleListTest {
 		int actual = ((DoubleList<Integer>) intList).getSize();
 		int expected = 4;
 		assertEquals(expected, actual);
+		
 	}
 
 	@Test
